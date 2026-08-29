@@ -1,0 +1,109 @@
+#:import colormap kivy.utils.colormap
+#:import colormap kivy.utils.colormap
+
+
+#:set main_color "#ff0000"
+#:set main_color_dark "#ffffff"
+
+<MainButton@Button>:
+    size_hint: 1, 0.2
+    on_press: app.play_click_sound()
+    
+
+<Target>:
+    allow_stretch: True
+    size_hint: 1, 0.2
+    
+
+<MenuScreen>:
+    BoxLayout:
+        orientation: "vertical"
+        padding: "20dp"
+        spacing: "20dp"
+
+        canvas.before:
+            Color:
+                #1, 1, 1, 1 - для фону картинки
+                rgba: colormap['green']  
+
+            Rectangle:
+                pos: self.pos
+                size: self.size
+                # source: "img/background.avif"
+
+        Image:
+            source: "img/logo.png"
+            size_hint: 1, 0.3
+
+        Label:
+            text: "ASTON MARTIN"
+            font_size: "25sp"
+            size_hint: 1, 0.3
+
+        MainButton:
+            text: "PLAY"
+            on_press: root.go_game()
+        
+        MainButton:
+            text: "STTINGS"
+            on_press: root.go_settings()
+
+        MainButton:
+            text: "EXIT"
+            on_press: root.exit_app()
+
+<GameScreen>:
+    BoxLayout:
+        orientation: "vertical"
+        padding: "20dp"
+        spacing: "20dp"
+
+        canvas.before:
+            Color:
+                #1, 1, 1, 1 - для фону картинки
+                rgba: colormap['green']  
+
+            Rectangle:
+                pos: self.pos
+                size: self.size
+                # source: "img/background.avif"
+        
+        Label:
+            text: f"hp: {monster.hp}"
+            font_size: "40sp"
+            size_hint: 1, 0.2
+
+        Target:
+            size_hint: 1, 0.4
+            id:monster
+            on_death: root.level_complete()
+        
+        Button:
+            size_hint: 1, 0.05
+            text: "Menu"
+            on_press: root.go_menu(), app.play_click_sound()
+
+
+<SettingsScreen>:
+    BoxLayout:
+        orientation: "vertical"
+        padding: "20dp"
+        spacing: "20dp"
+
+        canvas.before:
+            Color:
+                #1, 1, 1, 1 - для фону картинки
+                rgba: colormap['green']  
+
+            Rectangle:
+                pos: self.pos
+                size: self.size
+                # source: "img/background.avif"
+        
+        MainButton:
+            text: "account reset"
+            on_press: root.account_reset()
+        
+        MainButton:
+            text: "Menu"
+            on_press: root.go_menu()
