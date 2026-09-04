@@ -5,11 +5,6 @@ on:
     branches: [main, master]
   workflow_dispatch:
 
-# Отключает вывод предупреждений о старых версиях Node.js в логах
-env:
-  ACTIONS_RUNNER_PRINT_LOG_TO_STDOUT: "true"
-  ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION: "true"
-
 permissions:
   contents: read
 
@@ -40,6 +35,6 @@ jobs:
         if: success()
         uses: actions/upload-artifact@v4.6.1
         with:
-          name: Aston-Martin-clicker-apk
+          name: underwater-clicker-apk
           path: bin/*.apk
           if-no-files-found: error
