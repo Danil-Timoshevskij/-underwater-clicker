@@ -23,7 +23,7 @@ version = 0.1
 
 # (list) Application requirements
 # comma separated e.g. requirements = sqlite3,kivy
-requirements = python3,kivy
+requirements = python3,kivy,hostpython3
 
 # (str) Presplash image file (якщо маєте сплеш-скрін у папці assets, розкоментуйте)
 #presplash.filename = %(source.dir)s/assets/presplash.png
